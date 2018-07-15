@@ -61,7 +61,7 @@ tdlib
 ### TODO
 channels, Secret Chats, bots and payments. These major functions have not been realized yet.
 
-### 技术交流群
+### Technical exchange group 
 Bug feedback, comments and suggestions are welcome to join [Telegramd Chinese Technical Exchange Group](https://t.me/joinchat/D8b0DQ-CrvZXZv2dWn310g) discuss。
 
 ## English
