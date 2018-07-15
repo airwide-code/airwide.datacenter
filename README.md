@@ -1,4 +1,4 @@
-# airwide.datacenter - Airwide Data Center Deaemon written in go programming
+# airwide.datacenter 
 > a high-performance, stable server airwide client ecosystem 
 
 ### Introduction 
