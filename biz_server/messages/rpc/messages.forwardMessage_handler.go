@@ -1,32 +1,23 @@
 /*
- *  Copyright (c) 2017, https://github.com/nebulaim
+ *  Copyright (c) 2018, https://github.com/airwide-code/airwide.datacenter
  *  All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
  *
- *   http://www.apache.org/licenses/LICENSE-2.0
  *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
  */
 
 package rpc
 
 import (
 	"github.com/golang/glog"
-	"github.com/nebulaim/telegramd/baselib/logger"
-	"github.com/nebulaim/telegramd/baselib/grpc_util"
-	"github.com/nebulaim/telegramd/mtproto"
-	"github.com/nebulaim/telegramd/biz/base"
-	message2 "github.com/nebulaim/telegramd/biz/core/message"
-	"github.com/nebulaim/telegramd/biz/core/user"
+	"github.com/airwide-code/airwide.datacenter/baselib/logger"
+	"github.com/airwide-code/airwide.datacenter/baselib/grpc_util"
+	"github.com/airwide-code/airwide.datacenter/mtproto"
+	"github.com/airwide-code/airwide.datacenter/biz/base"
+	message2 "github.com/airwide-code/airwide.datacenter/biz/core/message"
+	"github.com/airwide-code/airwide.datacenter/biz/core/user"
 	"golang.org/x/net/context"
-	"github.com/nebulaim/telegramd/biz_server/sync_client"
+	"github.com/airwide-code/airwide.datacenter/biz_server/sync_client"
 )
 
 // @benqi: android和pc客户端未发现会发送此消息

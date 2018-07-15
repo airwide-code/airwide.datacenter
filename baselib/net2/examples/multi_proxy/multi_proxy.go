@@ -1,8 +1,8 @@
 package main
 
 import (
-	"github.com/nebulaim/telegramd/baselib/app"
-	"github.com/nebulaim/telegramd/baselib/net2/examples/multi_proxy/server"
+	"github.com/airwide-code/airwide.datacenter/baselib/app"
+	"github.com/airwide-code/airwide.datacenter/baselib/net2/examples/multi_proxy/server"
 )
 
 func main() {

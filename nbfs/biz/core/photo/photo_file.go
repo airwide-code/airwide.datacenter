@@ -1,34 +1,25 @@
 /*
- *  Copyright (c) 2018, https://github.com/nebulaim
+ *  Copyright (c) 2018, https://github.com/airwide-code
  *  All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
  *
- *   http://www.apache.org/licenses/LICENSE-2.0
  *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
  */
 
 package photo
 
 import (
 	"github.com/disintegration/imaging"
-	"github.com/nebulaim/telegramd/mtproto"
-	"github.com/nebulaim/telegramd/nbfs/biz/dal/dataobject"
+	"github.com/airwide-code/airwide.datacenter/mtproto"
+	"github.com/airwide-code/airwide.datacenter/nbfs/biz/dal/dataobject"
 	"image"
 	"fmt"
 	"github.com/golang/glog"
 	"math/rand"
-	base2 "github.com/nebulaim/telegramd/biz/base"
+	base2 "github.com/airwide-code/airwide.datacenter/biz/base"
 	// "os"
-	"github.com/nebulaim/telegramd/nbfs/biz/core"
-	"github.com/nebulaim/telegramd/nbfs/biz/dal/dao"
+	"github.com/airwide-code/airwide.datacenter/nbfs/biz/core"
+	"github.com/airwide-code/airwide.datacenter/nbfs/biz/dal/dao"
 	"os"
 	"io/ioutil"
 	"time"

@@ -1,39 +1,30 @@
 /*
- *  Copyright (c) 2018, https://github.com/nebulaim
+ *  Copyright (c) 2018, https://github.com/airwide-code
  *  All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
  *
- *   http://www.apache.org/licenses/LICENSE-2.0
  *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
  */
 
 package server
 
 import (
-	"github.com/nebulaim/telegramd/baselib/net2"
+	"github.com/airwide-code/airwide.datacenter/baselib/net2"
 	"github.com/BurntSushi/toml"
 	"github.com/golang/glog"
-	"github.com/nebulaim/telegramd/baselib/redis_client"
-	"github.com/nebulaim/telegramd/baselib/mysql_client"
-	"github.com/nebulaim/telegramd/baselib/grpc_util"
-	"github.com/nebulaim/telegramd/baselib/grpc_util/service_discovery"
-	"github.com/nebulaim/telegramd/biz/dal/dao"
+	"github.com/airwide-code/airwide.datacenter/baselib/redis_client"
+	"github.com/airwide-code/airwide.datacenter/baselib/mysql_client"
+	"github.com/airwide-code/airwide.datacenter/baselib/grpc_util"
+	"github.com/airwide-code/airwide.datacenter/baselib/grpc_util/service_discovery"
+	"github.com/airwide-code/airwide.datacenter/biz/dal/dao"
 	"google.golang.org/grpc"
-	"github.com/nebulaim/telegramd/mtproto"
+	"github.com/airwide-code/airwide.datacenter/mtproto"
 	"time"
 	"github.com/gogo/protobuf/proto"
 	"fmt"
 	"encoding/binary"
 	"sync"
-	"github.com/nebulaim/telegramd/baselib/net2/watcher2"
+	"github.com/airwide-code/airwide.datacenter/baselib/net2/watcher2"
 	"github.com/coreos/etcd/clientv3"
 )
 

@@ -1,18 +1,9 @@
 /*
- *  Copyright (c) 2018, https://github.com/nebulaim
+ *  Copyright (c) 2018, https://github.com/airwide-code
  *  All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
  *
- *   http://www.apache.org/licenses/LICENSE-2.0
  *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
  */
 
 package main
@@ -21,17 +12,17 @@ import (
 	"flag"
 	"github.com/golang/glog"
 
-	upload "github.com/nebulaim/telegramd/nbfs/nbfs/upload/rpc"
-	photo "github.com/nebulaim/telegramd/nbfs/nbfs/photo/rpc"
-	"github.com/nebulaim/telegramd/mtproto"
-	"github.com/nebulaim/telegramd/baselib/mysql_client"
+	upload "github.com/airwide-code/airwide.datacenter/nbfs/nbfs/upload/rpc"
+	photo "github.com/airwide-code/airwide.datacenter/nbfs/nbfs/photo/rpc"
+	"github.com/airwide-code/airwide.datacenter/mtproto"
+	"github.com/airwide-code/airwide.datacenter/baselib/mysql_client"
 	"github.com/BurntSushi/toml"
 	"fmt"
-	"github.com/nebulaim/telegramd/nbfs/biz/dal/dao"
-	"github.com/nebulaim/telegramd/baselib/grpc_util"
-	"github.com/nebulaim/telegramd/baselib/grpc_util/service_discovery"
+	"github.com/airwide-code/airwide.datacenter/nbfs/biz/dal/dao"
+	"github.com/airwide-code/airwide.datacenter/baselib/grpc_util"
+	"github.com/airwide-code/airwide.datacenter/baselib/grpc_util/service_discovery"
 	"google.golang.org/grpc"
-	"github.com/nebulaim/telegramd/nbfs/biz/core"
+	"github.com/airwide-code/airwide.datacenter/nbfs/biz/core"
 )
 
 func init() {

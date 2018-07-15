@@ -9,7 +9,7 @@ package app
 import (
 	"os/signal"
 	"syscall"
-	"github.com/airwide-code/airwide.datacenter/glog"
+	"github.com/golang/glog"
 	"os"
 	"flag"
 )

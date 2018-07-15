@@ -1,18 +1,9 @@
 /*
- *  Copyright (c) 2017, https://github.com/nebulaim
+ *  Copyright (c) 2018, https://github.com/airwide-code/airwide.datacenter
  *  All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
  *
- *   http://www.apache.org/licenses/LICENSE-2.0
  *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
  */
 
 package main
@@ -21,31 +12,31 @@ import (
 	"flag"
 	"github.com/golang/glog"
 
-	account "github.com/nebulaim/telegramd/biz_server/account/rpc"
-	auth "github.com/nebulaim/telegramd/biz_server/auth/rpc"
-	bots "github.com/nebulaim/telegramd/biz_server/bots/rpc"
-	channels "github.com/nebulaim/telegramd/biz_server/channels/rpc"
-	contacts "github.com/nebulaim/telegramd/biz_server/contacts/rpc"
-	help "github.com/nebulaim/telegramd/biz_server/help/rpc"
-	langpack "github.com/nebulaim/telegramd/biz_server/langpack/rpc"
-	messages "github.com/nebulaim/telegramd/biz_server/messages/rpc"
-	payments "github.com/nebulaim/telegramd/biz_server/payments/rpc"
-	phone "github.com/nebulaim/telegramd/biz_server/phone/rpc"
-	photos "github.com/nebulaim/telegramd/biz_server/photos/rpc"
-	stickers "github.com/nebulaim/telegramd/biz_server/stickers/rpc"
-	updates "github.com/nebulaim/telegramd/biz_server/updates/rpc"
-	users "github.com/nebulaim/telegramd/biz_server/users/rpc"
-	"github.com/nebulaim/telegramd/mtproto"
-	"github.com/nebulaim/telegramd/baselib/redis_client"
-	"github.com/nebulaim/telegramd/baselib/mysql_client"
+	account "github.com/airwide-code/airwide.datacenter/biz_server/account/rpc"
+	auth "github.com/airwide-code/airwide.datacenter/biz_server/auth/rpc"
+	bots "github.com/airwide-code/airwide.datacenter/biz_server/bots/rpc"
+	channels "github.com/airwide-code/airwide.datacenter/biz_server/channels/rpc"
+	contacts "github.com/airwide-code/airwide.datacenter/biz_server/contacts/rpc"
+	help "github.com/airwide-code/airwide.datacenter/biz_server/help/rpc"
+	langpack "github.com/airwide-code/airwide.datacenter/biz_server/langpack/rpc"
+	messages "github.com/airwide-code/airwide.datacenter/biz_server/messages/rpc"
+	payments "github.com/airwide-code/airwide.datacenter/biz_server/payments/rpc"
+	phone "github.com/airwide-code/airwide.datacenter/biz_server/phone/rpc"
+	photos "github.com/airwide-code/airwide.datacenter/biz_server/photos/rpc"
+	stickers "github.com/airwide-code/airwide.datacenter/biz_server/stickers/rpc"
+	updates "github.com/airwide-code/airwide.datacenter/biz_server/updates/rpc"
+	users "github.com/airwide-code/airwide.datacenter/biz_server/users/rpc"
+	"github.com/airwide-code/airwide.datacenter/mtproto"
+	"github.com/airwide-code/airwide.datacenter/baselib/redis_client"
+	"github.com/airwide-code/airwide.datacenter/baselib/mysql_client"
 	"github.com/BurntSushi/toml"
 	"fmt"
-	"github.com/nebulaim/telegramd/biz/dal/dao"
-	"github.com/nebulaim/telegramd/baselib/grpc_util"
-	"github.com/nebulaim/telegramd/baselib/grpc_util/service_discovery"
+	"github.com/airwide-code/airwide.datacenter/biz/dal/dao"
+	"github.com/airwide-code/airwide.datacenter/baselib/grpc_util"
+	"github.com/airwide-code/airwide.datacenter/baselib/grpc_util/service_discovery"
 	"google.golang.org/grpc"
-	"github.com/nebulaim/telegramd/biz_server/sync_client"
-	"github.com/nebulaim/telegramd/biz/nbfs_client"
+	"github.com/airwide-code/airwide.datacenter/biz_server/sync_client"
+	"github.com/airwide-code/airwide.datacenter/biz/nbfs_client"
 )
 
 func init() {

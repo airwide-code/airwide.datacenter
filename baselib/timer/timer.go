@@ -21,7 +21,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/nebulaim/telegramd/baselib/sync2"
+	"github.com/airwide-code/airwide.datacenter/baselib/sync2"
 )
 
 // Out-of-band messages

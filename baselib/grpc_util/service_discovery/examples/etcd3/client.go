@@ -1,18 +1,9 @@
 /*
- *  Copyright (c) 2017, https://github.com/nebulaim
+ *  Copyright (c) 2018, https://github.com/airwide-code/airwide.datacenter
  *  All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
  *
- *   http://www.apache.org/licenses/LICENSE-2.0
  *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
  */
 
 package main
@@ -23,9 +14,9 @@ import (
 	"log"
 	"time"
 	"github.com/coreos/etcd/clientv3"
-	"github.com/nebulaim/telegramd/baselib/grpc_util/service_discovery/examples/proto"
-	"github.com/nebulaim/telegramd/baselib/grpc_util/service_discovery/etcd3"
-	"github.com/nebulaim/telegramd/baselib/grpc_util/load_balancer"
+	"github.com/airwide-code/airwide.datacenter/baselib/grpc_util/service_discovery/examples/proto"
+	"github.com/airwide-code/airwide.datacenter/baselib/grpc_util/service_discovery/etcd3"
+	"github.com/airwide-code/airwide.datacenter/baselib/grpc_util/load_balancer"
 )
 
 func main() {
