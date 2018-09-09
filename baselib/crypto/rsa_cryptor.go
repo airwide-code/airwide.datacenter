@@ -16,8 +16,11 @@ import (
 )
 
 /*
-  telegram客户端使用的是pkcs1格式公钥证书，但GO语言没找到支持PKCS8格式的操作，
-  参考
+
+  The telegram client uses the public key certificate in the pkcs1 format, 
+  but the GO language does not find operations that support the PKCS8 format.
+
+  Reference 
      http://blog.qiujinwu.com/2017/07/14/rsa/
      https://medium.com/@oyrxx/rsa%E7%A7%98%E9%92%A5%E4%BB%8B%E7%BB%8D%E5%8F%8Aopenssl%E7%94%9F%E6%88%90%E5%91%BD%E4%BB%A4-d3fcc689513f
 

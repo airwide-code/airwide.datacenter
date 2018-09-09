@@ -1,0 +1,34 @@
+AIRWIDE DATACENTER ARCHITECTURE
+===============================
+
+mtprotocCode generator
+- https://github.com/airwide-code/airwide.mtprotoc
+
+Automatically convert tl to protobuf protocol
+
+Automatically generate codec code of tl binary data, which can convert the binary data received by the client tl into a protobuf object, and access it through grpc
+
+dalgenData access layer code generator
+- https://github.com/airwide-code/airwide.dal.generator
+
+Integrated sqlparser parser, automatically generate dao code through configurable sql
+Check sql syntax when generating code, greatly reducing the chance of error in traditional handwritten sql implementation and the workload of handwritten sql calls
+Support for switchable multiple service registration and discovery systems
+
+Integration of grpc's recovery and other middleware
+
+Remote Procedure Call - RPC
+https://grpc.io/docs/quickstart/go.html
+
+Diffie–Hellman key exchange
+- https://github.com/airwide-code/airwide.datacenter/blob/master/doc/dh-key-exchange.md
+
+Creating an Authorization Key
+- https://github.com/airwide-code/airwide.datacenter/blob/master/doc/Creating_an_Authorization_Key.md
+
+Mobile Protocol: Detailed Description
+- https://github.com/airwide-code/airwide.datacenter/blob/master/doc/Mobile_Protocol-Detailed_Description_v.1.0_DEPRECATED.md
+
+Content Delivery Network
+- https://github.com/airwide-code/airwide.datacenter/blob/master/doc/cdn.md
+

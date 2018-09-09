@@ -47,7 +47,7 @@ type authServerConfig struct{
 	Redis 		[]redis_client.RedisConfig
 }
 
-// 整合各服务，方便开发调试
+// Integrate services to facilitate development and debugging
 func main() {
 	flag.Parse()
 
@@ -59,11 +59,11 @@ func main() {
 
 	glog.Info(config)
 
-	// 初始化mysql_client、redis_client
+	// initialization mysql_client、redis_client
 	redis_client.InstallRedisClientManager(config.Redis)
 	mysql_client.InstallMysqlClientManager(config.Mysql)
 
-	// 初始化redis_dao、mysql_dao
+	// initialization redis_dao、mysql_dao
 	dao.InstallMysqlDAOManager(mysql_client.GetMysqlClientManager())
 	dao.InstallRedisDAOManager(redis_client.GetRedisClientManager())
 

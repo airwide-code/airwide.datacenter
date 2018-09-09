@@ -5,10 +5,10 @@
 # todo(yumcoder) change folder path for nbfs
 
 docker start mysql-docker redis-docker etcd-docker
-export GOROOT=/usr/local/go
+export GOROOT=/c/opt/go
 export PATH=$GOROOT/bin:$PATH
-export GOPATH=/home/airwide
-airwide_datacenter="/home/airwide/src/github.com/airwide-code/airwide.datacenter"
+export GOPATH=/c/home/airwide
+airwide_datacenter="/c/home/airwide/src/github.com/airwide-code/airwide.datacenter"
 
 echo "build frontend ..."
 cd ${airwide_datacenter}/access/frontend
