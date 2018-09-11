@@ -18,7 +18,7 @@ import (
    "encoding/binary"
    "time"
    "github.com/airwide-code/airwide.datacenter/baselib/net2/watcher2"
-   "github.com/airwide-code/etcd/clientv3"
+   "github.com/coreos/etcd/clientv3"
    // "github.com/airwide-code/airwide.datacenter/baselib/grpc_util"
    "github.com/airwide-code/airwide.datacenter/baselib/grpc_util/load_balancer"
    "github.com/airwide-code/airwide.datacenter/baselib/base"

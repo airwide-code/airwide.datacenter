@@ -14,37 +14,37 @@ echo "build frontend ..."
 cd ${airwide_datacenter}/access/frontend
 go get
 go build
-./frontend &
+nohup ./frontend &
 
 echo "build auth_key ..."
 cd ${airwide_datacenter}/access/auth_key
 go get
 go build
-.//auth_key &
+nohup ./auth_key &
 
 echo "build sync ..."
 cd ${airwide_datacenter}/push/sync
 go get
 go build
-./sync &
+nohup ./sync &
 
 echo "build nbfs ..."
 cd ${airwide_datacenter}/nbfs/nbfs
 go get
 go build
-./nbfs &
+nohup ./nbfs &
 
 echo "build biz_server ..."
 cd ${airwide_datacenter}/biz_server
 go get
 go build
-./biz_server &
+nohup ./biz_server &
 
 echo "build session ..."
 cd ${airwide_datacenter}/access/session
 go get
 go build
-./session &
+nohup ./session &
 
 echo "***** wait *****"
 wait

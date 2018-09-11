@@ -13,7 +13,7 @@ addr = "0.0.0.0:8000"
 [server443]
 name = "frontend443"
 protoName = "mtproto"
-addr = "0.0.0.0:12345"
+addr = "0.0.0.0:10443"
 # 43
 
 [server5222]
