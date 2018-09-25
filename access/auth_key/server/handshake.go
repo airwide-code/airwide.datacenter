@@ -34,20 +34,20 @@ const (
 var (
 	headerRpcMetadata = "auth_key_metadata"
 
-	// TODO(@benqi): 预先计算出fingerprint
-	// 这里直接使用了0xc3b42b026ce86b21
+	// TODO(@benqi): pre-calculated fingerprint
+	// used directly here: 0xc3b42b026ce86b21
 	fingerprint uint64 = 12240908862933197005
 
-	// TODO(@benqi): 使用算法生成PQ
-	// 这里直接指定了PQ值: {0x17, 0xED, 0x48, 0x94, 0x1A, 0x08, 0xF9, 0x81}
+	// TODO(@benqi): generated using algorithm: PQ
+	// The PQ value is directly specified here: {0x17, 0xED, 0x48, 0x94, 0x1A, 0x08, 0xF9, 0x81}
 	pq = string([]byte{0x17, 0xED, 0x48, 0x94, 0x1A, 0x08, 0xF9, 0x81})
 
-	// TODO(@benqi): 直接指定了p和q
+	// TODO(@benqi): directly specified p and q
 	p = []byte{0x49, 0x4C, 0x55, 0x3B}
 	q = []byte{0x53, 0x91, 0x10, 0x73}
 
-	// TODO(@benqi): 直接指定了dh2048_p和dh2048_g!!!
-	// andriod client 指定的good prime
+	// TODO(@benqi): directly specified dh2048_p and dh2048_g!!!
+	// good prime specified by andriod client
 	//
 	// static const char *goodPrime = "
 	//
@@ -105,11 +105,11 @@ var (
 type handshake struct {
 	rsa *crypto.RSACryptor
 
-	// TODO(@benqi): 使用map管理多个g和p
+	// TODO(@benqi): use map to manage multiple g and p
 	dh2048p []byte
 	dh2048g []byte
 
-	// cache dh2048p和dh2048p
+	// cache dh2048p with dh2048p
 	bigIntDH2048G *big.Int
 	bigIntDH2048P *big.Int
 }
@@ -196,7 +196,7 @@ func (s *handshake) onReqPq(state *mtproto.HandshakeState, request *mtproto.TLRe
 
 	// check State and ResState
 
-	// 检查数据是否合法
+	// check if the data is legal
 	if request.GetNonce() == nil || len(request.GetNonce()) != 16 {
 		err := fmt.Errorf("onReqPq - invalid nonce: %v", request)
 		glog.Error(err)
@@ -209,15 +209,8 @@ func (s *handshake) onReqPq(state *mtproto.HandshakeState, request *mtproto.TLRe
 		Pq:                          pq,
 		ServerPublicKeyFingerprints: []int64{int64(fingerprint)},
 	}}
-	//
-	//resPQ := mtproto.NewTLResPQ()
-	//resPQ.SetNonce(make([]byte, 16))
-	//copy(resPQ.Data2.Nonce, request.GetNonce())
-	//resPQ.SetServerNonce(crypto.GenerateNonce(16))
-	//resPQ.SetPq(pq)
-	//resPQ.SetServerPublicKeyFingerprints([]int64{int64(fingerprint)})
 
-	// 缓存客户端Nonce
+	// cache client Nonce
 	authKeyMD.Nonce = request.GetNonce()
 	authKeyMD.ServerNonce = resPQ.GetServerNonce()
 
