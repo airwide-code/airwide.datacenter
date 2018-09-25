@@ -161,10 +161,10 @@ func makeAuthSentCodeType(codeType, codeLength int, pattern string) (authSentCod
 }
 
 func MakeCodeData(authKeyId int64, phoneNumber string) *phoneCodeData {
-	// TODO(@benqi): 独立出统一消息推送系统
-	// 检查phpne是否存在，若存在是否在线决定是否通过短信发送或通过其他客户端发送
-	// 透传AuthId，UserId，终端类型等
-	// 检查满足条件的TransactionHash是否存在，可能的条件：
+	// TODO(@benqi): Independent Unified Messaging Push System 
+	// Check if phpne exists. If it exists online, decide whether to send it via SMS or send it through other clients. 
+	// Transparent transmission of AuthId, UserId, terminal type, etc. 
+	// Check if the TransactionHash that satisfies the condition exists. Possible conditions: 
 	//  1. is_deleted !=0 and now - created_at < 15 分钟
 	//
 
@@ -230,11 +230,14 @@ func (code *phoneCodeData) checkDataType(validType int) {
 //}
 
 func (code *phoneCodeData) doSendCodeCallback() error {
+	glog.Infof("doSendCodeCallback()")
 	if code.codeCallback != nil {
+	        glog.Infof("code.codeCallback defined. Sending Code...")
 		return code.codeCallback.SendCode(code.code, code.codeHash, code.sentCodeType)
 	}
 
-	// TODO(@benqi): 测试环境默认发送成功
+	glog.Infof("code.codeCallback NOT defined. Returning dummy truth. Test Environment.")
+	// TODO(@benqi): The test environment is sent successfully by default. 
 	return nil
 }
 
@@ -242,7 +245,7 @@ func (code *phoneCodeData) doSendCodeCallback() error {
 func (code *phoneCodeData) DoSendCode(phoneRegistered, allowFlashCall, currentNumber bool, apiId int32, apiHash string) error {
 	code.checkDataType(kDBTypeCreate)
 
-	// 使用最简单的办法，每次新建
+	// Use the easiest way to create a new one each time. 
 	sentCodeType, nextCodeType := makeCodeType(phoneRegistered, allowFlashCall, currentNumber)
 	// TODO(@benqi): gen rand number
 	code.code = "12345"
@@ -479,9 +482,9 @@ func (code *phoneCodeData) DoSignUp(phoneCode string) error {
 	return nil
 }
 
-// 如果手机号已经注册，检查是否有其他设备在线，有则使用sentCodeTypeApp
-// 否则使用sentCodeTypeSms
-// TODO(@benqi): 有则使用sentCodeTypeFlashCall和entCodeTypeCall？？
+// If the mobile number is already registered, check if other devices are online, and use the sendCodeTypeApp 
+// Otherwise use sentCodeTypeSms 
+// TODO(@benqi): Is there a use of sentCodeTypeFlashCall and entCodeTypeCall? ? 
 func (code *phoneCodeData) ToAuthSentCode(phoneRegistered bool) *mtproto.TLAuthSentCode {
 	// TODO(@benqi): only use sms
 

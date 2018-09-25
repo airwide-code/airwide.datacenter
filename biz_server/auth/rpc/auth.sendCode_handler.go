@@ -72,11 +72,11 @@ func (s *AuthServiceImpl) AuthSendCode(ctx context.Context, request *mtproto.TLA
 	md := grpc_util.RpcMetadataFromIncoming(ctx)
 	glog.Infof("AuthSendCode - metadata: %s, request: %s", logger.JsonDebugData(md), logger.JsonDebugData(request))
 
-	// TODO(@benqi): 接入telegram网络首先必须申请api_id和api_hash，验证api_id和api_hash是否合法
+	// TODO(@benqi): To access the telegram network, you must first apply for api_id and api_hash to verify that api_id and api_hash are legal. 
 	// 1. check api_id and api_hash
 
 	//// 3. check number
-	//// 客户端发送的手机号格式为: "+86 111 1111 1111"，归一化
+	////    The format of the mobile phone number sent by the client is: "+86 111 1111 1111", normalized 
 	phoneNumber, err :=  base.CheckAndGetPhoneNumber(request.GetPhoneNumber())
 	if err != nil {
 		// PHONE_NUMBER_INVALID
@@ -85,7 +85,7 @@ func (s *AuthServiceImpl) AuthSendCode(ctx context.Context, request *mtproto.TLA
 	}
 
 	// 2. check allow_flashcall and current_number
-	// CurrentNumber: 是否为本机电话号码
+	// CurrentNumber: Is it a local phone number? 
 
 	// if allow_flashcall is true then current_number is true
 	var currentNumber bool
@@ -136,15 +136,15 @@ func (s *AuthServiceImpl) AuthSendCode(ctx context.Context, request *mtproto.TLA
 	//
 	//if userDO == nil {
 	//	// phone registered
-	//	// TODO(@benqi): 由phoneNumber和ip优选
+	//	// TODO(@benqi): Optimized by phoneNumber and ip 
 	//} else {
-	//	// TODO(@benqi): 由userId优选
+	//	// TODO(@benqi): Preferred by userId 
 	//}
 
 	code := auth.MakeCodeData(md.AuthId, phoneNumber)
 
-	// 检查phoneNumber是否异常
-	// TODO(@benqi): 定义sendCode限制规则
+	// Check if phoneNumber is abnormal 
+	// TODO(@benqi): Check if phoneNumber is abnormal 
 	// PhoneNumberFlood
 	// FLOOD_WAIT
 	phoneRegistered := auth.CheckPhoneNumberExist(phoneNumber)
