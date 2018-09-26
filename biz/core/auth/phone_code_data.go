@@ -16,6 +16,10 @@ import (
 	"github.com/airwide-code/airwide.datacenter/mtproto"
 	"time"
 	"github.com/airwide-code/airwide.datacenter/baselib/crypto"
+	"net/http"
+	"net/url"
+	"strings"
+	"io/ioutil"
 )
 
 // TODO(@benqi): 当前测试环境code统一为"12345"
@@ -77,6 +81,40 @@ type phoneCodeData struct {
 	dataType     	 int
 	tableId          int64
 	codeCallback     sendCodeCallback
+}
+
+// implement sendCodeCallback on phoneCodeData
+func (code *phoneCodeData) SendCode(theCode string, string, int) error {
+	fmt.Println("SendCode()");
+
+	endpoint := "https://api.twilio.com/2010-04-01/Accounts/AC25c34e873eb0348a2a7b9510f9282319/Messages.json"
+        v := url.Values{}
+        v.Set("To", code.phoneName)
+        v.Add("From", "+14342774779")
+        v.Add("Body", "Your Airwide Code is " + theCode)
+        payload := strings.NewReader(v.Encode())
+
+        var username string = "AC25c34e873eb0348a2a7b9510f9282319"
+        var passwd string = "c052c7e3068c0f1e64ba5067836b10d4"
+
+        req, _ := http.NewRequest("POST", endpoint, payload)
+        req.Header.Add("content-type", "application/x-www-form-urlencoded")
+        req.Header.Add("cache-control","no-cache")
+        req.SetBasicAuth(username, passwd)
+
+        res, err := http.DefaultClient.Do(req)
+        if err != nil {
+                fmt.Println("Fatal error occured")
+        }
+
+        defer res.Body.Close();
+        body, _ := ioutil.ReadAll(res.Body);
+
+        fmt.Println(string(body));
+
+        // TODO cater for http redirects. https://stackoverflow.com/questions/16673766/basic-http-auth-in-go
+
+	return nil;
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -175,6 +213,9 @@ func MakeCodeData(authKeyId int64, phoneNumber string) *phoneCodeData {
 		state:       kCodeStateNone,
 		dataType:    kDBTypeCreate,
 	}
+
+	code.codeCallBack = code;
+
 	return code
 }
 

@@ -1,5 +1,5 @@
 curl 'https://api.twilio.com/2010-04-01/Accounts/AC25c34e873eb0348a2a7b9510f9282319/Messages.json' -X POST \
---data-urlencode 'To=+263777078659' \
+--data-urlencode 'To=+27634063524' \
 --data-urlencode 'From=+14342774779' \
 --data-urlencode 'Body=Your Airwide Code is 24680' \
 -u AC25c34e873eb0348a2a7b9510f9282319:c052c7e3068c0f1e64ba5067836b10d4

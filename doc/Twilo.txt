@@ -1,0 +1,23 @@
+
+My mobile number:
+(434) 277-4779
+ +14342774779
+
+Getting Started using Twilo
+https://www.twilio.com/console/phone-numbers/getting-started
+https://www.twilio.com/console/runtime/api-explorer/sms/messages/create
+
+Go HTTP Reference
+https://golang.org/pkg/net/http/
+
+Go Reference
+https://tip.golang.org/doc/effective_go.html
+
+Go Blogs
+https://blog.golang.org/
+- First Class Functions in Go
+-- https://blog.golang.org/first-class-functions-in-go-and-new-go
+
+Go Tutorial
+http://www.codershood.info/2017/06/25/http-curl-request-golang/
+https://reqres.in/
