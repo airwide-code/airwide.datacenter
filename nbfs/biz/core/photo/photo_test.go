@@ -20,7 +20,7 @@ import (
 
 func init()  {
 	mysqlConfig := mysql_client.MySQLConfig{
-		Name:   "immaster",
+		Name:   "immain",
 		DSN:    "root:@/nebulaim?charset=utf8",
 		Active: 5,
 		Idle:   2,

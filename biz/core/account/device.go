@@ -25,9 +25,9 @@ import (
 //)
 
 func RegisterDevice(authKeyId int64, userId int32, tokenType int8, token string) bool {
-	slave := dao.GetDevicesDAO(dao.DB_SLAVE)
-	master := dao.GetDevicesDAO(dao.DB_MASTER)
-	do := slave.SelectByToken(tokenType, token)
+	subordinate := dao.GetDevicesDAO(dao.DB_SLAVE)
+	main := dao.GetDevicesDAO(dao.DB_MASTER)
+	do := subordinate.SelectByToken(tokenType, token)
 	if do == nil {
 		do = &dataobject.DevicesDO{
 			AuthKeyId: authKeyId,
@@ -35,16 +35,16 @@ func RegisterDevice(authKeyId int64, userId int32, tokenType int8, token string)
 			TokenType: tokenType,
 			Token: token,
 		}
-		do.Id = master.Insert(do)
+		do.Id = main.Insert(do)
 	} else {
-		master.UpdateStateById(0, do.Id)
+		main.UpdateStateById(0, do.Id)
 	}
 
 	return true
 }
 
 func UnRegisterDevice(tokenType int8, token string) bool {
-	master := dao.GetDevicesDAO(dao.DB_MASTER)
-	master.UpdateStateByToken(int8(1), tokenType, token)
+	main := dao.GetDevicesDAO(dao.DB_MASTER)
+	main.UpdateStateByToken(int8(1), tokenType, token)
 	return true
 }
