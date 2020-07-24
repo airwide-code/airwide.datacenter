@@ -22,13 +22,13 @@ import (
 func init()  {
 	rand.Seed(time.Now().UnixNano())
 	mysqlConfig1 := mysql_client.MySQLConfig{
-		Name:   "immaster",
+		Name:   "immain",
 		DSN:    "root:@/nebulaim?charset=utf8",
 		Active: 5,
 		Idle:   2,
 	}
 	mysqlConfig2 := mysql_client.MySQLConfig{
-		Name:   "imslave",
+		Name:   "imsubordinate",
 		DSN:    "root:@/nebulaim?charset=utf8",
 		Active: 5,
 		Idle:   2,

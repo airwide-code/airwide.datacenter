@@ -390,8 +390,8 @@ func (code *phoneCodeData) DoReSendCode() error {
 
 // auth.cancelCode
 func (code *phoneCodeData) DoCancelCode() bool {
-	master := dao.GetAuthPhoneTransactionsDAO(dao.DB_MASTER)
-	master.Delete(int8(kCodeStateDeleted), code.authKeyId, code.phoneNumber, code.codeHash)
+	main := dao.GetAuthPhoneTransactionsDAO(dao.DB_MASTER)
+	main.Delete(int8(kCodeStateDeleted), code.authKeyId, code.phoneNumber, code.codeHash)
 	return true
 }
 

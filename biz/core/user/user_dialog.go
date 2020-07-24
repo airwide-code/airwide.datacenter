@@ -125,19 +125,19 @@ func GetPeersDialogs(selfId int32, peers []*mtproto.InputPeer) (dialogs []*mtpro
 // 发件箱
 func CreateOrUpdateByOutbox(userId, peerType int32, peerId int32, topMessage int32, unreadMentions, clearDraft bool) {
 	var (
-		master = dao.GetUserDialogsDAO(dao.DB_MASTER)
+		main = dao.GetUserDialogsDAO(dao.DB_MASTER)
 		affectedRows = int64(0)
 		date = int32(time.Now().Unix())
 	)
 
 	if clearDraft && unreadMentions {
-		affectedRows = master.UpdateTopMessageAndMentionsAndClearDraft(topMessage, date, userId, int8(peerType), peerId)
+		affectedRows = main.UpdateTopMessageAndMentionsAndClearDraft(topMessage, date, userId, int8(peerType), peerId)
 	} else if clearDraft && !unreadMentions {
-		affectedRows = master.UpdateTopMessageAndClearDraft(topMessage, date, userId, int8(peerType), peerId)
+		affectedRows = main.UpdateTopMessageAndClearDraft(topMessage, date, userId, int8(peerType), peerId)
 	} else if !clearDraft && unreadMentions {
-		affectedRows = master.UpdateTopMessageAndMentions(topMessage, date, userId, int8(peerType), peerId)
+		affectedRows = main.UpdateTopMessageAndMentions(topMessage, date, userId, int8(peerType), peerId)
 	} else {
-		affectedRows = master.UpdateTopMessage(topMessage, date, userId, int8(peerType), peerId)
+		affectedRows = main.UpdateTopMessage(topMessage, date, userId, int8(peerType), peerId)
 	}
 
 	if affectedRows == 0 {
@@ -155,7 +155,7 @@ func CreateOrUpdateByOutbox(userId, peerType int32, peerId int32, topMessage int
 		dialog.TopMessage = topMessage
 		dialog.CreatedAt = base2.NowFormatYMDHMS()
 		dialog.Date2 = date
-		master.Insert(dialog)
+		main.Insert(dialog)
 	}
 	return
 }
@@ -163,15 +163,15 @@ func CreateOrUpdateByOutbox(userId, peerType int32, peerId int32, topMessage int
 // 收件箱
 func CreateOrUpdateByInbox(userId, peerType int32, peerId int32, topMessage int32, unreadMentions bool) {
 	var (
-		master = dao.GetUserDialogsDAO(dao.DB_MASTER)
+		main = dao.GetUserDialogsDAO(dao.DB_MASTER)
 		affectedRows = int64(0)
 		date = int32(time.Now().Unix())
 	)
 
 	if unreadMentions {
-		affectedRows = master.UpdateTopMessageAndUnreadAndMentions(topMessage, date, userId, int8(peerType), peerId)
+		affectedRows = main.UpdateTopMessageAndUnreadAndMentions(topMessage, date, userId, int8(peerType), peerId)
 	} else {
-		affectedRows = master.UpdateTopMessageAndUnread(topMessage, date, userId, int8(peerType), peerId)
+		affectedRows = main.UpdateTopMessageAndUnread(topMessage, date, userId, int8(peerType), peerId)
 	}
 
 	glog.Info("createOrUpdateByInbox - ", affectedRows)
@@ -191,7 +191,7 @@ func CreateOrUpdateByInbox(userId, peerType int32, peerId int32, topMessage int3
 		dialog.CreatedAt = base2.NowFormatYMDHMS()
 		dialog.DraftMessageData = ""
 		dialog.Date2 = date
-		master.Insert(dialog)
+		main.Insert(dialog)
 	} else {
 
 	}
@@ -200,9 +200,9 @@ func CreateOrUpdateByInbox(userId, peerType int32, peerId int32, topMessage int3
 
 func SaveDraftMessage(userId int32, peerType int32, peerId int32, message *mtproto.DraftMessage) {
 	var (
-		master = dao.GetUserDialogsDAO(dao.DB_MASTER)
+		main = dao.GetUserDialogsDAO(dao.DB_MASTER)
 	)
 
 	draft, _ := json.Marshal(message)
-	master.SaveDraft(string(draft), userId, int8(peerType), peerId)
+	main.SaveDraft(string(draft), userId, int8(peerType), peerId)
 }

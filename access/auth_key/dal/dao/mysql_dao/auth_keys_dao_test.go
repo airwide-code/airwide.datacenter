@@ -17,7 +17,7 @@ import (
 
 func init()  {
 	mysqlConfig := mysql_client.MySQLConfig{
-		Name:   "immaster",
+		Name:   "immain",
 		DSN:    "root:@/nebulaim?charset=utf8",
 		Active: 5,
 		Idle:   2,
@@ -27,7 +27,7 @@ func init()  {
 }
 
 func TestCheckExists(t *testing.T) {
-	authKeysDAO := NewAuthKeysDAO(mysql_client.GetMysqlClient("immaster"))
+	authKeysDAO := NewAuthKeysDAO(mysql_client.GetMysqlClient("immain"))
 	do := &dataobject.AuthKeysDO{
 		AuthId: 2,
 		Body:   "123",
